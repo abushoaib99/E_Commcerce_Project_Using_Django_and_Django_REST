@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Previous Order History Details{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+
+
+{% block content %}
+<style>
+    .fh5co-post-entry article{
+    text-align: right !important;
+
+    .navbar-inverse .navbar-nav > .buyerprofile > a{
+    color: #fff;
+    background-color: #090909;
+}
+
+</style>
+	<!-- END #fh5co-header -->
+	<div class="container-fluid">
+		<div class="row fh5co-post-entry single-entry">
+
+			<article class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0">
+                <div class="form-group cl-md-4">
+                    <div style="text-align: center;font-size:30px" class="alert alert-success"><strong>Previous order details</strong></div>
+                </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" >Product Name</label>
+                        <div class="control-label col-sm-5">
+
+                           <input name="name" class="form-control" value="{{history.product_name}}" readonly>
+                        </div>
+                    </div><br><br>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" >Product Price</label>
+                        <div class="control-label col-sm-5">
+                           <input name="unit_price" class="form-control" value="{{history.unit_price}}" readonly>
+                        </div>
+                    </div><br><br>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" >Selected Quantity</label>
+                        <div class="control-label col-sm-5">
+                           <input name="quantity" class="form-control" value="{{history.select_quantity}}" readonly>
+                        </div>
+                    </div><br><br>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" >Total Price</label>
+                        <div class="control-label col-sm-5">
+                           <input class="form-control" name="total_price" value="{{history.total_price}}" readonly>
+                        </div>
+                     </div><br><br>
+                     <div class="form-group">
+                        <label class="control-label col-sm-3" ></label>
+                        <div class="control-label col-sm-5">
+                           <a href="{% url 'buyerprofile' %}" class="btn btn-info pull pull-right">Back</a>
+                        </div>
+                     </div>
+
+			</article>
+		</div>
+
+	</div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}
+
+

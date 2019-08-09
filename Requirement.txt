@@ -1,0 +1,23 @@
+
+Installing required package:
+1.pip install requests (for access api)
+2.pp install djangorestframework (for Dajango REST Framework)
+3.pip install pillow (for upload file/image)
+4.Install postgreSQL 11 or something (for postgresql)
+5.Install pgadmin (for postgresql UI) 
+6.pip install psycopg2 (for Django and PostgreSQL connection)
+
+
+Django Admin:
+Username: shoaib
+Password: shoaib
+
+
+For User Login:
+For Seller:
+Username: seller
+Pass: shoaib28746
+
+For Buyer:
+Usename: buyer
+Pass: shoaib28746

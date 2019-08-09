@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+{% block head %}
+      <style>
+          .navbar {
+          border-radius: 0px !important;
+          }
+      </style>
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'home' %}">E-Commerce</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="{% url 'home' %}">Home</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'signup' %}"><span></span> Sign Up</a></li>
+            <li><a href="{% url 'login' %}"><span></span> Login</a></li>
+          </ul>
+        </div>
+      </nav>
+		{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% if messages %}
+<div class="messages">
+    {% for message in messages %}
+    <div {% if message.tags %} class="alert alert-danger"{% endif %}>{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="panel panel-default">
+			  <div class="panel-heading">
+			    <h3 class="panel-title">Please login to your account</h3>
+			  </div>
+			  <div class="panel-body">
+			    <form action="" method="POST">
+			    	{% csrf_token %}
+				  <div class="form-group">
+				    <label for="u">Username</label>
+				    <input type="text" class="form-control" name="user" id="u" placeholder="Enter Username">
+				  </div>
+				  <div class="form-group">
+				    <label for="p">Password</label>
+				    <input type="password" class="form-control" name="pass" id="p" placeholder="Password">
+				  </div>
+				  <button type="submit" class="btn btn-info">Login</button>
+				</form>
+			  </div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}

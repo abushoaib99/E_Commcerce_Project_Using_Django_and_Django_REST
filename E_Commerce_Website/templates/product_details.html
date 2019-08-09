@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Product Details{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+
+
+{% block content %}
+<style>
+    .fh5co-post-entry article{
+    text-align: right !important;
+
+}
+
+</style>
+	<!-- END #fh5co-header -->
+	<div class="container-fluid">
+		<div class="row fh5co-post-entry single-entry">
+			<article class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12 col-xs-offset-0">
+				<figure class="animate-box">
+					<img src="{{context.image}}"" alt="Image" class="img-responsive">
+				</figure>
+                <form action="/checkout/" method="post">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" >Product Name</label>
+                        <div class="control-label col-sm-5">
+                           <input name="name" class="form-control" value="{{context.name}}" readonly>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" >Product Price</label>
+                        <div class="control-label col-sm-5">
+                           <input name="price" class="form-control" value="{{context.price}}" readonly>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    {% if context.available_quantity == 0 %}
+                        <span class="fh5co-meta fh5co-date animate-box">Product is not available</span>
+                        {% else %}
+                        <div class="form-group">
+                            <label class="control-label col-sm-3" >Available Quantity</label>
+                            <div class="control-label col-sm-5">
+                               <input name="available_quantity" class="form-control" value="{{context.available_quantity}}" readonly>
+                            </div>
+                        </div>
+<!--                        <span class="fh5co-meta fh5co-date animate-box">-->
+<!--                            -->
+<!--                        </span>-->
+                    {%endif%}
+
+                    {% if context.available_quantity > 0 %}
+                        <br>
+                        <br>
+                         <div class="form-group">
+                            <label class="control-label col-sm-3" >Select Quantity</label>
+                            <div class="control-label col-sm-3">
+                               <input type="number" class="form-control" placeholder="Select Quantity" name="select_quantity"  min="1" max="{{context.available_quantity}}" required>
+                            </div>
+                         </div><br><br>
+                    <div class="form-group">
+                            <label class="control-label col-sm-3" ></label>
+                            <div class="control-label col-sm-3">
+                                <button name="pid" class="btn btn-info" value="{{context.id}}">Check Out</button>
+                            </div>
+                         </div><br><br>
+                    {%endif%}
+
+                </form>
+
+
+<!--                <h2 class="fh5co-article-title animate-box">{{context.available_quantity}}</h2>-->
+                <span class="fh5co-meta fh5co-date animate-box"></span>
+
+				<div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-left content-article">
+					<div class="row">
+						<div class="col-lg-12 cp-r animate-box">
+                            <h2>Product Description</h2>
+                            <h3>Seller Name: {{context.seller_name}}</h3>
+							<p>{{context.description}}</p>
+						</div>
+					</div>
+				</div>
+
+			</article>
+		</div>
+
+
+	</div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}

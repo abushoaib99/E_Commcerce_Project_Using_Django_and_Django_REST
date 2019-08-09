@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+	{% load static %}
+	{% block title%}Home{%endblock%}
+	{% block stylesheet %}
+<style>
+
+	.navbar-inverse .navbar-nav > .home > a{
+    color: #fff;
+    background-color: #090909;
+</style>
+{% endblock %}
+
+	<!-- END #fh5co-header -->
+		{% block content %}
+
+			{% for p in product %}
+			<article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
+				<figure>
+					 {% if "BUYER" in request.session.name %}
+						<a href="{% url 'product_details' p.id %}"><img src="{{p.image}}" alt="Image" class="img-responsive"></a>
+					{% elif "SELLER" in request.session.name %}
+			 		 	<img src="{{p.image}}" alt="Image" class="img-responsive">
+					{% else %}
+					<a href="{% url 'login'%}"><img src="{{p.image}}" alt="Image" class="img-responsive"></a>
+			  		{% endif %}
+				</figure>
+				<h3>Name: {{p.name}}</h3>
+				<h3>Price: {{p.price}} Tk</h3>
+			</article>
+			{% endfor %}
+
+		{% endblock %}
+
+		{% block script %}
+
+		{% endblock %}
+
+

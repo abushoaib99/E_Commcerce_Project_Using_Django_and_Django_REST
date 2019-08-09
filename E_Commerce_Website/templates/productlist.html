@@ -1,0 +1,58 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Available Product List{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+
+{% block content %}
+<style>
+    .fh5co-post-entry article{
+    text-align: right !important;
+
+    .navbar-inverse .navbar-nav > .productlist > a{
+    color: #fff;
+    background-color: #090909;
+}
+
+</style>
+
+	<!-- END #fh5co-header -->
+	<div class="container">
+        <div class="form-group cl-md-4">
+            <div style="text-align: center;font-size:30px" class="alert alert-info"><strong>Available Product list</strong></div>
+        </div>
+	<a href="{% url 'addproduct' %}" class="btn btn-info pull pull-right">Add New Product</a>
+	<a href="{% url 'addcategory' %}" class="btn btn-info pull pull-right">Add New Category</a>
+	<a href="{% url 'categorylist' %}" class="btn btn-info pull pull-right">Category List</a>
+	<a href="{% url 'changepassword' %}" class="btn btn-info pull pull-right">Change Password</a>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Product Name</th>
+				<th>Category Name</th>
+				<th>Available Quantity</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for p in product%}
+			<tr style="color:#31708f">
+                <td>{{p.name}}</td>
+				<td>{{p.category_name}}</td>
+				<td>{{p.available_quantity}}</td>
+                <td><a style="color:#31708f" href="{% url 'updateproduct' p.id %}">Edit</a>||
+                    <a style="color:#31708f" href="{% url 'deleteproduct' p.id %}">Delete</a>
+                </td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}
+

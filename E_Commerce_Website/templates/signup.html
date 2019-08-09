@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}Signup{% endblock %}
+
+{% block stylesheet %}
+
+{% endblock %}
+{% block head %}
+      <style>
+          .navbar {
+          border-radius: 0px !important;
+          }
+      </style>
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'home' %}">E-Commerce</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="{% url 'home' %}">Home</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'signup' %}"><span></span> Sign Up</a></li>
+            <li><a href="{% url 'login' %}"><span></span> Login</a></li>
+          </ul>
+        </div>
+      </nav>
+		{% endblock %}
+{% block content %}
+<div class="container">
+    {% if messages %}
+		<div class="messages">
+			{% for message in messages %}
+			<div {% if message.tags %} class="alert alert-danger"{% endif %}>{{ message }}</div>
+			{% endfor %}
+		</div>
+	{% endif %}
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="panel panel-default">
+			  <div class="panel-heading">
+			    <h3 class="panel-title">Please Signup</h3>
+			  </div>
+			  <div class="panel-body from-control">
+				  <form action="" method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+					{{ form.as_p }}
+					  {{ otherform.as_p}}
+					<button type="submit" class="btn btn-info">Signup</button>
+				</form>
+			  </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+{% endblock %}
+
+
+
+
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+    <div {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+	<form action="" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button>Sugnup</button>
+	</form>

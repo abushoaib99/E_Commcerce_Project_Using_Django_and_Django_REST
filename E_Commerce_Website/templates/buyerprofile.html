@@ -1,0 +1,50 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Profile{% endblock %}
+
+{% block stylesheet %}
+{% endblock %}
+
+
+{% block content %}
+<style>
+    .fh5co-post-entry article{
+    text-align: right !important;
+
+}
+.navbar-inverse .navbar-nav > .buyerprofile > a{
+    color: #fff;
+    background-color: #090909;
+</style>
+
+	<!-- END #fh5co-header -->
+	<div class="container">
+        <div class="form-group cl-md-4">
+            <div style="text-align: center;font-size:30px" class="alert alert-info"><strong>Previous Order History</strong></div>
+        </div>
+	<a href="{% url 'home' %}" class="btn btn-info pull pull-right">Buy New Product</a>
+	<a href="{% url 'changepassword' %}" class="btn btn-info pull pull-right">Change Password</a>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>History</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for h in history%}
+			<tr>
+                <td><a style="color:#31708f" href="{% url 'historydetails' h.id %}">{{h.product_name}}</a></td>
+				<td><a style="color:#31708f" href="{% url 'historydetails' h.id %}">Details</a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}
+
+
